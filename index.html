@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>roytalex — Александр Ройтберг</title>
+  <meta name="description" content="Александр Ройтберг (roytalex) — IT-блогер и мини-бизнесмен. Сайты, Telegram-боты, игры, алгоритмы." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="code-rain" aria-hidden="true" id="codeRain"></div>
+
+  <header class="nav">
+    <a class="nav__brand" href="#top">roytalex</a>
+    <nav class="nav__links" aria-label="Основная навигация">
+      <a href="#boot">Обо мне</a>
+      <a href="#skills">Навыки</a>
+      <a href="#story">История</a>
+      <a href="#contact">Связь</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1800&q=80"
+          alt=""
+          class="hero__img hero__img--main"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+          alt=""
+          class="hero__img hero__img--float"
+        />
+        <div class="hero__veil"></div>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__brand reveal">roytalex</p>
+        <h1 class="hero__title reveal delay-1">Код, контент и свои проекты</h1>
+        <p class="hero__lead reveal delay-2">
+          Александр Ройтберг — IT-блогер и мини-бизнесмен. Здесь про разработку, идеи и то, что я умею делать руками.
+        </p>
+        <div class="hero__actions reveal delay-3">
+          <a class="btn btn--primary" href="#boot">Включить компьютер</a>
+          <a class="btn btn--ghost" href="#skills">Смотреть навыки</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="boot" id="boot">
+      <div class="section-head">
+        <h2>Нажми на компьютер</h2>
+        <p>Кликни по ноутбуку — экран оживает, и ты узнаешь больше про roytalex.</p>
+      </div>
+
+      <div class="boot__stage">
+        <button class="laptop" id="laptop" type="button" aria-expanded="false" aria-controls="bootPanel">
+          <span class="laptop__hint" id="laptopHint">клик</span>
+          <span class="laptop__body">
+            <span class="laptop__bezel">
+              <span class="laptop__screen" id="laptopScreen">
+                <span class="laptop__idle">
+                  <span class="cursor-blink">_</span>
+                  <span>press to boot</span>
+                </span>
+                <span class="laptop__live" hidden>
+                  <span class="laptop__line">user@roytalex:~$</span>
+                  <span class="laptop__typed" id="screenTyped"></span>
+                </span>
+              </span>
+            </span>
+            <span class="laptop__deck">
+              <span class="laptop__touch"></span>
+            </span>
+          </span>
+          <span class="laptop__shadow"></span>
+        </button>
+
+        <aside class="boot-panel" id="bootPanel" hidden>
+          <p class="boot-panel__label">system.out</p>
+          <h3>Александр Ройтберг</h3>
+          <p>
+            <!-- ЗАМЕНИ ЭТОТ ТЕКСТ -->
+            Здесь напиши свой текст: кто ты, чем занимаешься, про блог, мини-бизнес и путь в IT.
+            Пока это заглушка — смело переписывай под себя.
+          </p>
+          <ul>
+            <li>Ник: <strong>roytalex</strong></li>
+            <li>Сфера: IT, контент, свои продукты</li>
+            <li>Стек: Python, JavaScript, C++</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <div class="skills__bg" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80" alt="" />
+      </div>
+      <div class="section-head section-head--light">
+        <h2>Что я умею</h2>
+        <p>От сайтов и ботов до игр и олимпиадных задач — собираю, пишу и запускаю.</p>
+      </div>
+
+      <div class="skills__grid" id="skillsGrid">
+        <article class="skill" data-skill>
+          <span class="skill__index">01</span>
+          <h3>Сайты</h3>
+          <p>Лендинги, портфолио и веб-страницы с анимацией и чистой вёрсткой.</p>
+        </article>
+        <article class="skill" data-skill>
+          <span class="skill__index">02</span>
+          <h3>Telegram-боты</h3>
+          <p>Автоматизация, меню, ответы пользователям и полезные мини-сервисы в Telegram.</p>
+        </article>
+        <article class="skill" data-skill>
+          <span class="skill__index">03</span>
+          <h3>Игры на Pygame</h3>
+          <p>Игровая логика, спрайты, уровни и механики на Python + Pygame.</p>
+        </article>
+        <article class="skill" data-skill>
+          <span class="skill__index">04</span>
+          <h3>Приложения на Tkinter</h3>
+          <p>Десктопные окна, формы и утилиты с графическим интерфейсом.</p>
+        </article>
+        <article class="skill" data-skill>
+          <span class="skill__index">05</span>
+          <h3>JavaScript</h3>
+          <p>Интерактив на страницах, логика интерфейса и живые эффекты.</p>
+        </article>
+        <article class="skill" data-skill>
+          <span class="skill__index">06</span>
+          <h3>Python</h3>
+          <p>Скрипты, боты, игры, автоматизация — основной рабочий язык.</p>
+        </article>
+        <article class="skill" data-skill>
+          <span class="skill__index">07</span>
+          <h3>C++</h3>
+          <p>Быстрый код, структуры данных и задачи, где важна производительность.</p>
+        </article>
+        <article class="skill" data-skill>
+          <span class="skill__index">08</span>
+          <h3>Алгоритмы и олимпиады</h3>
+          <p>Олимпиадное программирование, алгоритмы и тренировка мышления через задачи.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="terminal-zone" id="terminal">
+      <div class="section-head">
+        <h2>Живой терминал</h2>
+        <p>Ещё одна анимация: команды сами печатаются — как будто я за клавиатурой.</p>
+      </div>
+
+      <div class="terminal" id="terminalBox" tabindex="0">
+        <div class="terminal__bar">
+          <span></span><span></span><span></span>
+          <p>roytalex — zsh</p>
+        </div>
+        <pre class="terminal__body" id="terminalBody" aria-live="polite"></pre>
+        <button class="btn btn--small" id="replayTerminal" type="button">Проиграть снова</button>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="story__media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80" alt="" />
+      </div>
+      <div class="story__copy">
+        <h2>Моя история</h2>
+        <p class="editable">
+          <!-- ЗАМЕНИ ЭТОТ ТЕКСТ -->
+          Сюда вставь свой рассказ: как начал программировать, зачем ведёшь блог,
+          какие проекты уже сделал и куда идёшь дальше. Текст можно править прямо в HTML.
+        </p>
+        <p class="editable">
+          <!-- ЗАМЕНИ ЭТОТ ТЕКСТ -->
+          Второй абзац — про мини-бизнес, контент и то, чем ты отличаешься.
+          Оставь столько текста, сколько нужно.
+        </p>
+      </div>
+    </section>
+
+    <section class="orbit" id="orbit">
+      <div class="section-head">
+        <h2>Стек вокруг roytalex</h2>
+        <p>Крутящаяся орбита технологий — ещё один живой акцент на странице.</p>
+      </div>
+      <div class="orbit__stage">
+        <div class="orbit__ring" aria-hidden="true">
+          <span style="--i:0">Python</span>
+          <span style="--i:1">JavaScript</span>
+          <span style="--i:2">C++</span>
+          <span style="--i:3">Pygame</span>
+          <span style="--i:4">Tkinter</span>
+          <span style="--i:5">Telegram</span>
+          <span style="--i:6">HTML/CSS</span>
+          <span style="--i:7">Algorithms</span>
+        </div>
+        <div class="orbit__core">
+          <strong>roytalex</strong>
+          <span>build · ship · tell</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Связаться</h2>
+      <p>
+        <!-- ЗАМЕНИ ССЫЛКИ И ТЕКСТ -->
+        Напиши мне — обсудим сайт, бота, игру или коллаб.
+      </p>
+      <div class="contact__links">
+        <a class="btn btn--primary" href="https://t.me/roytalex" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a class="btn btn--ghost" href="mailto:alexroytberg14@gmail.com">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> roytalex · Александр Ройтберг</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
