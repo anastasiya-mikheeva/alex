@@ -818,6 +818,10 @@ section {
     grid-template-columns: 1fr 1fr;
   }
 
+  .orbit__stage {
+    width: min(100%, 420px);
+  }
+
   .orbit__ring span {
     transform:
       rotate(calc(var(--i) * 45deg))
