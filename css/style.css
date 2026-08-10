@@ -167,13 +167,14 @@ input {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0;
   list-style: none;
   margin: 0;
   padding: 0;
   flex: 1;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 
 .nav-links > li {
@@ -184,12 +185,12 @@ input {
 .nav-links > li > span {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 12px;
+  gap: 6px;
+  padding: 8px 10px;
   border-radius: 10px;
   color: var(--text-soft);
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   white-space: nowrap;
@@ -1041,15 +1042,17 @@ main {
 .delay-3 { transition-delay: 0.3s; }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1100px) {
-  .nav-links {
-    gap: 0;
-  }
-
+@media (max-width: 1200px) {
   .nav-links > li > a,
   .nav-links > li > span {
-    padding: 8px 9px;
-    font-size: 0.86rem;
+    padding: 8px 8px;
+    font-size: 0.8rem;
+    gap: 5px;
+  }
+
+  .nav-links > li > a i,
+  .nav-links > li > span i:first-child {
+    font-size: 0.85rem;
   }
 
   .wiki-search input {
@@ -1065,11 +1068,23 @@ main {
   }
 }
 
+@media (max-width: 1050px) {
+  .nav-links > li:nth-child(7),
+  .nav-links > li:nth-child(8) {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .nav-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .nav-links > li:nth-child(7),
+  .nav-links > li:nth-child(8) {
+    display: list-item;
   }
 
   .nav-links {
@@ -1080,6 +1095,7 @@ main {
     display: none;
     flex-direction: column;
     align-items: stretch;
+    flex-wrap: nowrap;
     background: rgba(15, 28, 18, 0.98);
     border-bottom: 1px solid var(--line);
     padding: 10px 14px 16px;
