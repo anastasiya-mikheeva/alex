@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Профиль — Roytalex</title>
+  <meta name="description" content="Профиль редактора Roytalex: статьи, правки, подписки и личные данные." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__glow ambient__glow--a"></div>
+    <div class="ambient__glow ambient__glow--b"></div>
+    <canvas id="constellation" class="constellation"></canvas>
+  </div>
+
+  <nav class="wiki-nav" id="wikiNav">
+    <div class="wiki-nav-container">
+      <div class="nav-left">
+        <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a href="index.html" class="nav-logo" aria-label="Roytalex">
+          <i class="fas fa-leaf"></i>
+        </a>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="index.html"><i class="fas fa-globe"></i> <span class="nav-text">Главная</span></a>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-compass"></i> <span class="nav-text">Категории</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#topics"><i class="fas fa-flask"></i> Наука</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-paint-brush"></i> Искусство</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-code"></i> Технологии</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-history"></i> История</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-leaf"></i> Природа</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-language"></i> Языки</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-newspaper"></i> Новости</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-futbol"></i> Спорт</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-rocket"></i> Космос</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-ellipsis-h"></i> Прочее</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-pen-fancy"></i> <span class="nav-text">Редактировать</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#about"><i class="fas fa-plus-circle"></i> Создать статью</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-graduation-cap"></i> <span class="nav-text">Обучение</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#learn"><i class="fas fa-book"></i> Курсы</a></li>
+            <li class="has-submenu">
+              <a href="index.html#learn"><i class="fas fa-newspaper"></i> Статьи для обучения</a>
+              <ul class="dropdown-submenu">
+                <li><a href="index.html#learn"><i class="fas fa-utensils"></i> Кулинария</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-laptop-code"></i> Программирование</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-calculator"></i> Математика</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-atom"></i> Физика</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-language"></i> Языки</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="index.html#messenger"><i class="fas fa-robot"></i> <span class="nav-text">ChatRoyt</span></a>
+        </li>
+        <li class="nav-item-more">
+          <span tabindex="0"><i class="fas fa-ellipsis-h"></i> <span class="nav-text">Ещё</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu dropdown-menu--right">
+            <li><a href="index.html#about"><i class="fas fa-microphone"></i> Голосовой помощник</a></li>
+            <li><a href="https://t.me/Roytalex_bot"><i class="fas fa-question-circle"></i> Помощь</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <form class="wiki-search" role="search" id="wikiSearch">
+          <input type="text" name="q" placeholder="Поиск..." aria-label="Поиск" />
+          <button type="submit" aria-label="Найти"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="nav-icons">
+          <a href="index.html#about" aria-label="Голосовой помощник" title="Голосовой помощник"><i class="fas fa-microphone"></i></a>
+          <a href="akk.html" class="is-current" aria-label="Профиль" title="Профиль"><i class="fas fa-user-circle"></i></a>
+          <a href="index.html#messenger" aria-label="Уведомления" title="Уведомления"><i class="fas fa-bell"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="profile-page" id="profilePage">
+    <article class="profile-card reveal">
+      <div class="profile-cover" aria-hidden="true">
+        <div class="profile-cover__orb"></div>
+      </div>
+
+      <header class="profile-header">
+        <div class="profile-avatar"><i class="fas fa-user"></i></div>
+        <div class="profile-info">
+          <h1 id="displayName">Алексей Википедистов</h1>
+          <div class="nickname" id="displayNick">@alex_wiki</div>
+          <div class="profile-meta">
+            <span class="profile-badge"><i class="fas fa-leaf"></i> Редактор Roytalex</span>
+            <span><i class="fas fa-calendar-alt"></i> С 12 марта 2020</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="profile-body">
+        <div class="profile-stats">
+          <div class="stat-item"><span class="number">247</span><span class="label">Статьи</span></div>
+          <div class="stat-item"><span class="number">1.2k</span><span class="label">Правки</span></div>
+          <div class="stat-item"><span class="number">89</span><span class="label">Загрузки</span></div>
+          <button class="stat-item is-action" id="followersStat" type="button">
+            <span class="number" id="followersCount">56</span>
+            <span class="label">Подписчики</span>
+          </button>
+        </div>
+
+        <div class="profile-bio">
+          <h3><i class="fas fa-info-circle"></i> О себе</h3>
+          <p id="displayBio">Редактор Википедии с 2020 года. Интересуюсь историей науки, технологиями и искусственным интеллектом. Люблю писать статьи о малоизвестных фактах и улучшать существующие материалы.</p>
+        </div>
+
+        <div class="profile-actions">
+          <button class="profile-btn profile-btn--primary" id="editToggleBtn" type="button"><i class="fas fa-pen"></i> Редактировать профиль</button>
+          <button class="profile-btn profile-btn--ghost" id="personalDataBtn" type="button"><i class="fas fa-lock"></i> Личные данные</button>
+          <button class="profile-btn profile-btn--ghost" id="followsBtn" type="button"><i class="fas fa-users"></i> Мои подписки</button>
+          <a href="index.html#messenger" class="profile-btn profile-btn--ghost"><i class="fas fa-envelope"></i> Написать сообщение</a>
+        </div>
+
+        <div class="personal-data" id="personalDataBlock">
+          <h3><i class="fas fa-user-secret"></i> Личные данные</h3>
+          <div class="data-row">
+            <span class="label">Никнейм</span>
+            <span class="value" id="pDataNick">@alex_wiki</span>
+          </div>
+          <div class="data-row">
+            <span class="label">Пароль</span>
+            <span class="value" id="pDataPwd">••••••••</span>
+            <button class="toggle-pwd" id="togglePwdBtn" type="button" aria-label="Показать пароль"><i class="fas fa-eye"></i></button>
+          </div>
+          <p class="personal-note"><i class="fas fa-shield-alt"></i> Пароль хранится в зашифрованном виде и не показывается целиком.</p>
+        </div>
+
+        <form class="edit-profile-form" id="editForm">
+          <h3><i class="fas fa-pen-fancy"></i> Редактирование</h3>
+          <div class="form-group">
+            <label for="editName"><i class="fas fa-user"></i> Имя</label>
+            <input type="text" id="editName" value="Алексей Википедистов" placeholder="Ваше полное имя" />
+          </div>
+          <div class="form-group">
+            <label for="editNick"><i class="fas fa-at"></i> Никнейм</label>
+            <input type="text" id="editNick" value="@alex_wiki" placeholder="Ваш уникальный ник" />
+          </div>
+          <div class="form-group">
+            <label for="editBio"><i class="fas fa-align-left"></i> О себе</label>
+            <textarea id="editBio" rows="3" placeholder="Расскажите о себе ...">Редактор Википедии с 2020 года. Интересуюсь историей науки, технологиями и искусственным интеллектом. Люблю писать статьи о малоизвестных фактах и улучшать существующие материалы.</textarea>
+          </div>
+          <div class="form-actions">
+            <button class="profile-btn profile-btn--primary" id="saveProfileBtn" type="submit"><i class="fas fa-check"></i> Сохранить</button>
+            <button class="profile-btn profile-btn--ghost" id="cancelEditBtn" type="button"><i class="fas fa-times"></i> Отмена</button>
+          </div>
+        </form>
+
+        <section class="user-articles">
+          <h3><i class="fas fa-newspaper"></i> Статьи пользователя</h3>
+          <div class="articles-grid">
+            <a class="article-card" href="index.html#about">
+              <div class="title">Искусственный интеллект: история и современность</div>
+              <div class="meta"><span><i class="fas fa-calendar"></i> 15 мая 2025</span><span><i class="fas fa-eye"></i> 1.2k</span></div>
+            </a>
+            <a class="article-card" href="index.html#about">
+              <div class="title">Квантовые вычисления для начинающих</div>
+              <div class="meta"><span><i class="fas fa-calendar"></i> 2 апреля 2025</span><span><i class="fas fa-eye"></i> 890</span></div>
+            </a>
+            <a class="article-card" href="index.html#about">
+              <div class="title">История развития робототехники</div>
+              <div class="meta"><span><i class="fas fa-calendar"></i> 18 марта 2025</span><span><i class="fas fa-eye"></i> 654</span></div>
+            </a>
+            <a class="article-card" href="index.html#about">
+              <div class="title">Как работает нейросеть: простыми словами</div>
+              <div class="meta"><span><i class="fas fa-calendar"></i> 10 февраля 2025</span><span><i class="fas fa-eye"></i> 2.1k</span></div>
+            </a>
+            <a class="article-card" href="index.html#about">
+              <div class="title">Экологические инновации в городской среде</div>
+              <div class="meta"><span><i class="fas fa-calendar"></i> 5 января 2025</span><span><i class="fas fa-eye"></i> 430</span></div>
+            </a>
+            <a class="article-card" href="index.html#about">
+              <div class="title">Биоинформатика: взгляд в будущее</div>
+              <div class="meta"><span><i class="fas fa-calendar"></i> 20 декабря 2024</span><span><i class="fas fa-eye"></i> 780</span></div>
+            </a>
+          </div>
+        </section>
+
+        <section class="recent-activity">
+          <h3><i class="fas fa-clock"></i> Недавние действия</h3>
+          <ul class="activity-list">
+            <li><i class="fas fa-edit"></i> Отредактировал статью «Искусственный интеллект» <span class="time">2 часа назад</span></li>
+            <li><i class="fas fa-plus-circle"></i> Создал статью «Квантовые вычисления» <span class="time">вчера</span></li>
+            <li><i class="fas fa-upload"></i> Загрузил изображение «Схема нейросети» <span class="time">3 дня назад</span></li>
+            <li><i class="fas fa-comment"></i> Оставил комментарий в обсуждении «Философия науки» <span class="time">5 дней назад</span></li>
+          </ul>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="index.html"><i class="fas fa-leaf"></i> Roytalex</a>
+      <p>Профиль редактора — статьи, правки и живой диалог.</p>
+    </div>
+  </footer>
+
+  <div class="follows-modal" id="followsModal" role="dialog" aria-modal="true" aria-labelledby="followsTitle">
+    <div class="follows-modal-content">
+      <div class="follows-modal-header">
+        <h2 id="followsTitle"><i class="fas fa-user-friends"></i> Мои подписки</h2>
+        <button class="follows-modal-close" id="followsModalClose" type="button" aria-label="Закрыть"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="follows-list">
+        <li>
+          <div class="avatar"><i class="fas fa-user"></i></div>
+          <div class="info">
+            <div class="name">Екатерина Смирнова <span class="badge">активный</span></div>
+            <div class="nick">@kat_smi</div>
+          </div>
+        </li>
+        <li>
+          <div class="avatar"><i class="fas fa-user"></i></div>
+          <div class="info">
+            <div class="name">Дмитрий Иванов</div>
+            <div class="nick">@dima_ivan</div>
+          </div>
+        </li>
+        <li>
+          <div class="avatar"><i class="fas fa-user"></i></div>
+          <div class="info">
+            <div class="name">Ольга Петрова <span class="badge">проверенный</span></div>
+            <div class="nick">@olga_petr</div>
+          </div>
+        </li>
+        <li>
+          <div class="avatar"><i class="fas fa-user"></i></div>
+          <div class="info">
+            <div class="name">Сергей Козлов</div>
+            <div class="nick">@serge_kozl</div>
+          </div>
+        </li>
+        <li>
+          <div class="avatar"><i class="fas fa-user"></i></div>
+          <div class="info">
+            <div class="name">Анна Морозова <span class="badge">админ</span></div>
+            <div class="nick">@anna_moroz</div>
+          </div>
+        </li>
+        <li>
+          <div class="avatar"><i class="fas fa-user"></i></div>
+          <div class="info">
+            <div class="name">Максим Новиков</div>
+            <div class="nick">@max_nov</div>
+          </div>
+        </li>
+        <li>
+          <div class="avatar"><i class="fas fa-user"></i></div>
+          <div class="info">
+            <div class="name">Татьяна Васильева</div>
+            <div class="nick">@tanya_vas</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

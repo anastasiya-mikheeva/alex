@@ -46,7 +46,7 @@
       }
     });
 
-    links.querySelectorAll("a[href^='#']").forEach((anchor) => {
+    links.querySelectorAll("a").forEach((anchor) => {
       anchor.addEventListener("click", () => {
         if (nav.classList.contains("is-open")) {
           nav.classList.remove("is-open");
@@ -55,6 +55,10 @@
         }
       });
     });
+
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 10);
+    }, { passive: true });
   }
 
   const search = document.getElementById("wikiSearch");
