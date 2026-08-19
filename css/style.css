@@ -2068,9 +2068,6 @@ main {
 }
 
 .delete-chat {
-  grid-column: 3;
-  grid-row: 1;
-  align-self: start;
   background: none;
   border: none;
   color: var(--text-dim);
