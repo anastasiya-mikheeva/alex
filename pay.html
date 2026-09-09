@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Сообщения — Roytalex</title>
-  <meta name="description" content="Мессенджер Roytalex: диалоги, поиск пользователей и живые ответы." />
+  <title>Оплата — Roytalex</title>
+  <meta name="description" content="Подписка Roytalex: читайте без ограничений, голос, ChatRoyt и обучение." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
@@ -92,61 +92,116 @@
         <div class="nav-icons">
           <a href="index.html#about" aria-label="Голосовой помощник" title="Голосовой помощник"><i class="fas fa-microphone"></i></a>
           <a href="akk.html" aria-label="Профиль" title="Профиль"><i class="fas fa-user-circle"></i></a>
-          <a href="mes.html" class="is-current" aria-label="Сообщения" title="Сообщения"><i class="fas fa-bell"></i></a>
+          <a href="mes.html" aria-label="Сообщения" title="Сообщения"><i class="fas fa-bell"></i></a>
         </div>
       </div>
     </div>
   </nav>
 
-  <main class="messenger-page" id="messengerPage">
-    <div class="messenger-container">
-      <aside class="chat-list">
-        <div class="chat-list-header">
-          <i class="fas fa-comments"></i> Диалоги
-          <span class="count" id="chatCount">0</span>
-          <button class="new-chat-btn" id="newChatBtn" type="button" title="Новый чат" aria-label="Новый чат">
-            <i class="fas fa-plus"></i>
-          </button>
-        </div>
-        <div class="chat-list-items" id="chatListItems"></div>
-      </aside>
+  <main class="pay-page" id="payPage">
+    <header class="pay-hero reveal">
+      <p class="kicker">Подписка Roytalex</p>
+      <h1>Знания без паузы — голос, статьи и ChatRoyt</h1>
+      <p class="lead">Выберите тариф. Это демо-оплата: деньги не списываются, карта никуда не уходит.</p>
+    </header>
 
-      <section class="chat-window">
-        <div class="chat-window-header" id="chatWindowHeader">
-          <button class="chat-back" id="chatBackBtn" type="button" aria-label="К списку диалогов">
-            <i class="fas fa-arrow-left"></i>
-          </button>
-          <div class="avatar"><i class="fas fa-user"></i></div>
+    <div class="pay-toggle reveal" role="group" aria-label="Период оплаты">
+      <button type="button" class="is-active" data-cycle="month" id="cycleMonth">Помесячно</button>
+      <button type="button" data-cycle="year" id="cycleYear">За год <span class="save">−20%</span></button>
+    </div>
+
+    <div class="pay-layout">
+      <div class="pay-plans reveal" id="payPlans">
+        <button class="pay-plan" type="button" data-plan="reader">
+          <h2>Читатель</h2>
+          <div class="price" data-month="0 ₽" data-year="0 ₽">0 ₽<small>навсегда</small></div>
+          <ul>
+            <li><i class="fas fa-check"></i> Статьи и категории</li>
+            <li><i class="fas fa-check"></i> Поиск по платформе</li>
+            <li><i class="fas fa-check"></i> Базовый ChatRoyt</li>
+          </ul>
+        </button>
+
+        <button class="pay-plan is-selected" type="button" data-plan="plus">
+          <span class="badge">популярный</span>
+          <h2>Plus</h2>
+          <div class="price" data-month="299 ₽" data-year="2 390 ₽">299 ₽<small>в месяц</small></div>
+          <ul>
+            <li><i class="fas fa-check"></i> Всё из тарифа «Читатель»</li>
+            <li><i class="fas fa-check"></i> Голосовой помощник без лимита</li>
+            <li><i class="fas fa-check"></i> Саммари статей и офлайн-чтение</li>
+            <li><i class="fas fa-check"></i> Курсы и видеоуроки</li>
+          </ul>
+        </button>
+
+        <button class="pay-plan" type="button" data-plan="pro">
+          <h2>Исследователь</h2>
+          <div class="price" data-month="799 ₽" data-year="6 390 ₽">799 ₽<small>в месяц</small></div>
+          <ul>
+            <li><i class="fas fa-check"></i> Всё из Plus</li>
+            <li><i class="fas fa-check"></i> Приоритет в ChatRoyt</li>
+            <li><i class="fas fa-check"></i> Загрузка файлов и правки без очереди</li>
+            <li><i class="fas fa-check"></i> Ранний доступ к новым курсам</li>
+          </ul>
+        </button>
+      </div>
+
+      <aside class="pay-checkout reveal delay-1">
+        <h2>Оформление</h2>
+        <div class="pay-summary">
           <div>
-            <span class="name" id="chatContactName">Выберите диалог</span>
-            <span class="status" id="chatContactStatus"></span>
+            <span class="label">Тариф</span>
+            <strong id="summaryPlan">Plus</strong>
           </div>
+          <div class="total" id="summaryPrice">299 ₽</div>
         </div>
-        <div class="chat-messages" id="chatMessages">
-          <div class="inbox-empty"><i class="fas fa-arrow-left"></i> Выберите чат из списка слева</div>
-        </div>
-        <form class="chat-input-area" id="chatForm">
-          <input type="text" id="chatInput" placeholder="Введите сообщение..." disabled aria-label="Сообщение" />
-          <button id="chatSendBtn" type="submit" disabled><i class="fas fa-paper-plane"></i> <span>Отправить</span></button>
+
+        <form class="pay-form" id="payForm" autocomplete="off">
+          <div class="pay-methods" aria-hidden="true">
+            <span><i class="fas fa-credit-card"></i> Карта</span>
+            <span><i class="fab fa-apple"></i> Apple Pay</span>
+            <span><i class="fas fa-university"></i> СБП</span>
+          </div>
+          <div class="form-group">
+            <label for="cardName">Имя на карте</label>
+            <input id="cardName" name="cardName" type="text" placeholder="Алексей Википедистов" required />
+          </div>
+          <div class="form-group">
+            <label for="cardNumber">Номер карты</label>
+            <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" placeholder="ACCT-000015" maxlength="19" required />
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="cardExpiry">Срок</label>
+              <input id="cardExpiry" name="cardExpiry" type="text" inputmode="numeric" placeholder="MM/YY" maxlength="5" required />
+            </div>
+            <div class="form-group">
+              <label for="cardCvc">CVC</label>
+              <input id="cardCvc" name="cardCvc" type="password" inputmode="numeric" placeholder="•••" maxlength="4" required />
+            </div>
+          </div>
+          <button class="pay-submit" type="submit"><i class="fas fa-lock"></i> Оплатить <span id="payAmount">299 ₽</span></button>
+          <p class="pay-note"><i class="fas fa-shield-alt"></i> Демо-форма: данные не отправляются на сервер и не сохраняются.</p>
         </form>
-      </section>
+
+        <div class="pay-success" id="paySuccess">
+          <div class="mark"><i class="fas fa-check"></i></div>
+          <h3>Оплата прошла</h3>
+          <p id="paySuccessText">Тариф Plus активен. Можно читать, слушать и спрашивать ChatRoyt без пауз.</p>
+          <a class="pay-submit" href="index.html" style="text-decoration:none;"><i class="fas fa-leaf"></i> На главную</a>
+        </div>
+      </aside>
     </div>
   </main>
 
-  <div class="add-chat-modal" id="addChatModal" role="dialog" aria-modal="true" aria-labelledby="addChatTitle">
-    <div class="add-chat-modal-content">
-      <div class="add-chat-modal-header">
-        <h2 id="addChatTitle"><i class="fas fa-user-plus"></i> Новый чат</h2>
-        <button class="add-chat-modal-close" id="addChatModalClose" type="button" aria-label="Закрыть"><i class="fas fa-times"></i></button>
-      </div>
-      <input type="text" class="add-chat-search" id="searchUsersInput" placeholder="Поиск по имени или никнейму..." />
-      <ul class="search-results" id="searchResults">
-        <li class="no-results">Введите запрос для поиска</li>
-      </ul>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="index.html"><i class="fas fa-leaf"></i> Roytalex</a>
+      <p>Подписка — статьи, голос и диалог без ограничений.</p>
     </div>
-  </div>
+  </footer>
 
   <script src="js/main.js"></script>
-  <script src="js/messenger.js"></script>
+  <script src="js/pay.js"></script>
 </body>
 </html>
