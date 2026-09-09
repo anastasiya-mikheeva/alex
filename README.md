@@ -8,6 +8,7 @@
 - `akk.html` — профиль редактора
 - `mes.html` — мессенджер
 - `pay.html` — оплата и подписка
+- `chat.html` — ChatRoyt
 
 ## Запуск
 
