@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatRoyt — Roytalex</title>
+  <meta name="description" content="ChatRoyt — ИИ-гид Roytalex: объясняет статьи, ищет материалы и отвечает естественным языком." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__glow ambient__glow--a"></div>
+    <div class="ambient__glow ambient__glow--b"></div>
+    <canvas id="constellation" class="constellation"></canvas>
+  </div>
+
+  <nav class="wiki-nav" id="wikiNav">
+    <div class="wiki-nav-container">
+      <div class="nav-left">
+        <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a href="index.html" class="nav-logo" aria-label="Roytalex">
+          <i class="fas fa-leaf"></i>
+        </a>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="index.html"><i class="fas fa-globe"></i> <span class="nav-text">Главная</span></a>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-compass"></i> <span class="nav-text">Категории</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#topics"><i class="fas fa-flask"></i> Наука</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-paint-brush"></i> Искусство</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-code"></i> Технологии</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-history"></i> История</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-leaf"></i> Природа</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-language"></i> Языки</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-newspaper"></i> Новости</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-futbol"></i> Спорт</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-rocket"></i> Космос</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-ellipsis-h"></i> Прочее</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-pen-fancy"></i> <span class="nav-text">Редактировать</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="ed.html"><i class="fas fa-plus-circle"></i> Создать статью</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-graduation-cap"></i> <span class="nav-text">Обучение</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#learn"><i class="fas fa-book"></i> Курсы</a></li>
+            <li class="has-submenu">
+              <a href="index.html#learn"><i class="fas fa-newspaper"></i> Статьи для обучения</a>
+              <ul class="dropdown-submenu">
+                <li><a href="index.html#learn"><i class="fas fa-utensils"></i> Кулинария</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-laptop-code"></i> Программирование</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-calculator"></i> Математика</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-atom"></i> Физика</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-language"></i> Языки</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="chat.html" class="active"><i class="fas fa-robot"></i> <span class="nav-text">ChatRoyt</span></a>
+        </li>
+        <li class="nav-item-more">
+          <span tabindex="0"><i class="fas fa-ellipsis-h"></i> <span class="nav-text">Ещё</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu dropdown-menu--right">
+            <li><a href="mes.html"><i class="fas fa-envelope"></i> Сообщения</a></li>
+            <li><a href="pay.html"><i class="fas fa-credit-card"></i> Оплата</a></li>
+            <li><a href="index.html#about"><i class="fas fa-microphone"></i> Голосовой помощник</a></li>
+            <li><a href="https://t.me/Roytalex_bot"><i class="fas fa-question-circle"></i> Помощь</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <form class="wiki-search" role="search" id="wikiSearch">
+          <input type="text" name="q" placeholder="Поиск..." aria-label="Поиск" />
+          <button type="submit" aria-label="Найти"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="nav-icons">
+          <a href="index.html#about" aria-label="Голосовой помощник" title="Голосовой помощник"><i class="fas fa-microphone"></i></a>
+          <a href="akk.html" aria-label="Профиль" title="Профиль"><i class="fas fa-user-circle"></i></a>
+          <a href="mes.html" aria-label="Сообщения" title="Сообщения"><i class="fas fa-bell"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="royt-page">
+    <div class="royt-shell">
+      <aside class="royt-side">
+        <button class="royt-new" id="roytNew" type="button"><i class="fas fa-plus"></i> Новый диалог</button>
+        <h2>Темы</h2>
+        <button class="royt-topic" type="button" data-prompt="Найди что-нибудь про льва"><i class="fas fa-paw"></i> Природа</button>
+        <button class="royt-topic" type="button" data-prompt="Объясни квантовые вычисления простыми словами"><i class="fas fa-atom"></i> Физика</button>
+        <button class="royt-topic" type="button" data-prompt="Как работает нейросеть?"><i class="fas fa-microchip"></i> ИИ</button>
+        <button class="royt-topic" type="button" data-prompt="Подбери статью для обучения математике"><i class="fas fa-calculator"></i> Математика</button>
+        <button class="royt-topic" type="button" data-prompt="Расскажи про историю робототехники"><i class="fas fa-history"></i> История</button>
+      </aside>
+
+      <section class="royt-main">
+        <div class="royt-head">
+          <span class="chat-stage__status"></span>
+          <strong>ChatRoyt</strong>
+          <em>онлайн</em>
+        </div>
+        <div class="royt-body" id="roytBody" aria-live="polite">
+          <div class="royt-welcome" id="roytWelcome">
+            <div class="mark"><i class="fas fa-robot"></i></div>
+            <h1>ChatRoyt</h1>
+            <p>Задайте вопрос по статье — объясню термин, соберу саммари или найду связанные материалы.</p>
+            <div class="royt-chips">
+              <button class="royt-chip" type="button">Найди что-нибудь про льва</button>
+              <button class="royt-chip" type="button">Как работает нейросеть?</button>
+              <button class="royt-chip" type="button">Объясни квантовые вычисления простыми словами</button>
+            </div>
+          </div>
+        </div>
+        <form class="royt-compose" id="roytForm" autocomplete="off">
+          <input id="roytInput" type="text" name="message" placeholder="Спросите ChatRoyt..." aria-label="Сообщение ChatRoyt" />
+          <button type="submit" aria-label="Отправить"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatroyt.js"></script>
+</body>
+</html>

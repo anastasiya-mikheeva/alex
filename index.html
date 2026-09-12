@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roytalex — Википедия будущего</title>
+  <meta name="description" content="Roytalex — пространство научных статей с ИИ, голосовым помощником, обучением и мессенджером. Википедия будущего." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__glow ambient__glow--a"></div>
+    <div class="ambient__glow ambient__glow--b"></div>
+    <canvas id="constellation" class="constellation"></canvas>
+  </div>
+
+  <nav class="wiki-nav" id="wikiNav">
+    <div class="wiki-nav-container">
+      <div class="nav-left">
+        <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a href="#top" class="nav-logo" aria-label="Roytalex">
+          <i class="fas fa-leaf"></i>
+        </a>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#top" class="active"><i class="fas fa-globe"></i> <span class="nav-text">Главная</span></a>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-compass"></i> <span class="nav-text">Категории</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="#topics"><i class="fas fa-flask"></i> Наука</a></li>
+            <li><a href="#topics"><i class="fas fa-paint-brush"></i> Искусство</a></li>
+            <li><a href="#topics"><i class="fas fa-code"></i> Технологии</a></li>
+            <li><a href="#topics"><i class="fas fa-history"></i> История</a></li>
+            <li><a href="#topics"><i class="fas fa-leaf"></i> Природа</a></li>
+            <li><a href="#topics"><i class="fas fa-language"></i> Языки</a></li>
+            <li><a href="#topics"><i class="fas fa-newspaper"></i> Новости</a></li>
+            <li><a href="#topics"><i class="fas fa-futbol"></i> Спорт</a></li>
+            <li><a href="#topics"><i class="fas fa-rocket"></i> Космос</a></li>
+            <li><a href="#topics"><i class="fas fa-ellipsis-h"></i> Прочее</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-pen-fancy"></i> <span class="nav-text">Редактировать</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="ed.html"><i class="fas fa-plus-circle"></i> Создать статью</a></li>
+            <li><a href="ed.html"><i class="fas fa-edit"></i> Править</a></li>
+            <li><a href="ed.html#file"><i class="fas fa-upload"></i> Загрузить файл</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-graduation-cap"></i> <span class="nav-text">Обучение</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="#learn"><i class="fas fa-book"></i> Курсы</a></li>
+            <li><a href="#learn"><i class="fas fa-video"></i> Видеоуроки</a></li>
+            <li class="has-submenu">
+              <a href="#learn"><i class="fas fa-newspaper"></i> Статьи для обучения</a>
+              <ul class="dropdown-submenu">
+                <li><a href="#learn"><i class="fas fa-utensils"></i> Кулинария</a></li>
+                <li><a href="#learn"><i class="fas fa-laptop-code"></i> Программирование</a></li>
+                <li><a href="#learn"><i class="fas fa-calculator"></i> Математика</a></li>
+                <li><a href="#learn"><i class="fas fa-atom"></i> Физика</a></li>
+                <li><a href="#learn"><i class="fas fa-language"></i> Языки</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="chat.html"><i class="fas fa-robot"></i> <span class="nav-text">ChatRoyt</span></a>
+        </li>
+        <li class="nav-item-more">
+          <span tabindex="0"><i class="fas fa-ellipsis-h"></i> <span class="nav-text">Ещё</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu dropdown-menu--right">
+            <li><a href="mes.html"><i class="fas fa-envelope"></i> Сообщения</a></li>
+            <li><a href="pay.html"><i class="fas fa-credit-card"></i> Оплата</a></li>
+            <li><a href="#about"><i class="fas fa-microphone"></i> Голосовой помощник</a></li>
+            <li><a href="#manifest"><i class="fas fa-question-circle"></i> Помощь</a></li>
+            <li><a href="#manifest"><i class="fas fa-cog"></i> Настройки</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <form class="wiki-search" role="search" id="wikiSearch">
+          <input type="text" name="q" placeholder="Поиск..." aria-label="Поиск" />
+          <button type="submit" aria-label="Найти"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="nav-icons">
+          <a href="#about" aria-label="Голосовой помощник" title="Голосовой помощник"><i class="fas fa-microphone"></i></a>
+          <a href="akk.html" aria-label="Профиль" title="Профиль"><i class="fas fa-user-circle"></i></a>
+          <a href="mes.html" aria-label="Сообщения" title="Сообщения"><i class="fas fa-bell"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-label="Roytalex">
+      <div class="hero__plane" aria-hidden="true">
+        <div class="hero__mesh"></div>
+        <div class="hero__orbit hero__orbit--1"></div>
+        <div class="hero__orbit hero__orbit--2"></div>
+        <div class="hero__orbit hero__orbit--3"></div>
+        <div class="hero__ring"></div>
+      </div>
+
+      <div class="hero__inner">
+        <p class="hero__brand reveal">Roytalex</p>
+        <h1 class="hero__title reveal delay-1">Википедия будущего, которая говорит с вами</h1>
+        <p class="hero__lead reveal delay-2">
+          Научные статьи, обучение и живой диалог с ИИ — в одном пространстве, где знание звучит и отвечает.
+        </p>
+        <div class="hero__actions reveal delay-3">
+          <a class="btn btn--primary" href="#about">Узнать о платформе</a>
+          <a class="btn btn--ghost" href="chat.html">Открыть ChatRoyt</a>
+        </div>
+      </div>
+
+      <div class="hero__ticker" aria-hidden="true">
+        <div class="hero__ticker-track" id="topicTicker">
+          <span><i class="fas fa-flask"></i> Наука</span>
+          <span><i class="fas fa-code"></i> Технологии</span>
+          <span><i class="fas fa-leaf"></i> Природа</span>
+          <span><i class="fas fa-rocket"></i> Космос</span>
+          <span><i class="fas fa-graduation-cap"></i> Обучение</span>
+          <span><i class="fas fa-heartbeat"></i> Медицина</span>
+          <span><i class="fas fa-futbol"></i> Спорт</span>
+          <span><i class="fas fa-language"></i> Языки</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pathways" id="topics" aria-label="Направления">
+      <div class="section-head reveal">
+        <h2>Четыре пути в знание</h2>
+        <p>Выберите направление — статьи уже подготовлены нейросетью: тезисы, саммари и связанные материалы.</p>
+      </div>
+
+      <div class="pathways__grid">
+        <a class="pathway reveal" href="#about" data-tone="medicine">
+          <i class="fas fa-dna"></i>
+          <h3>Медицина</h3>
+          <p>Генная инженерия, доказательная терапия, клинические исследования.</p>
+        </a>
+        <a class="pathway reveal delay-1" href="#learn" data-tone="code">
+          <i class="fas fa-microchip"></i>
+          <h3>Программирование</h3>
+          <p>Алгоритмы, ИИ, кибербезопасность и архитектура систем.</p>
+        </a>
+        <a class="pathway reveal delay-2" href="#about" data-tone="nature">
+          <i class="fas fa-seedling"></i>
+          <h3>Природа</h3>
+          <p>Экосистемы, эволюция, климат и живые миры вокруг нас.</p>
+        </a>
+        <a class="pathway reveal delay-3" href="#about" data-tone="sport">
+          <i class="fas fa-running"></i>
+          <h3>Спорт</h3>
+          <p>Биомеханика, питание и психология высоких результатов.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="content-section" id="about">
+      <article class="gg reveal">
+        <h2>Что такое Roytalex и для чего он нужен?</h2>
+        <p>Roytalex — это пространство, где научные статьи обретают голос. Представьте: вы открываете исследование по молекулярной биологии, и рядом с вами всегда ИИ, готовый в две секунды объяснить любой сложный термин или переформулировать абзац так, чтобы стало понятно даже новичку. А если глаза устали — включается голосовой помощник. Он читает статью вслух, идеально расставляя акценты, словно лектор с двадцатилетним стажем. Вы можете слушать разбор нейросетей на архитектурном уровне, пока готовите ужин, или погружаться в клинические исследования во время утренней пробежки.</p>
+        <p>На платформе собраны тысячи материалов по четырём направлениям: медицина (от генной инженерии до доказательной терапии), программирование (алгоритмы, ИИ, кибербезопасность), природа (экосистемы, эволюция, климат) и спорт (биомеханика, питание, спортивная психология). Каждая статья проходит предварительную обработку: нейросеть выделяет ключевые тезисы, создаёт краткое саммари и подбирает сопутствующие материалы по теме.</p>
+        <p>Но главное — Roytalex говорит с вами. Голосовой помощник понимает естественную речь: вы можете спросить «найди что-нибудь про льва», и он моментально предложит актуальную информацию на основе википедии. ChatRoyt встроен прямо в интерфейс — не нужно открывать отдельные окна, задавайте вопросы в процессе чтения, и нейросеть дополнит статью свежими данными или альтернативными точками зрения.</p>
+        <p>Это место, где наука перестаёт быть сухой и недоступной. Она становится живым диалогом, где у вас есть персональный гид — ИИ, который любит знания так же, как вы. Для студентов, исследователей, врачей, разработчиков и всех, кто привык думать. Roytalex не просто даёт информацию — он помогает её услышать.</p>
+      </article>
+    </section>
+
+    <section class="learn-band" id="learn">
+      <div class="learn-band__copy reveal">
+        <h2>Обучение без скуки</h2>
+        <p>Курсы, видеоуроки и статьи для обучения — от кулинарии до физики. Учитесь в своём темпе, а ChatRoyt подскажет, когда застряли.</p>
+        <div class="learn-band__tags">
+          <span>Кулинария</span>
+          <span>Программирование</span>
+          <span>Математика</span>
+          <span>Физика</span>
+          <span>Языки</span>
+        </div>
+      </div>
+      <div class="learn-band__visual reveal delay-2" aria-hidden="true">
+        <div class="pulse-core"></div>
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring pulse-ring--2"></div>
+        <ul class="learn-orbit">
+          <li style="--i:0"><i class="fas fa-book-open"></i></li>
+          <li style="--i:1"><i class="fas fa-video"></i></li>
+          <li style="--i:2"><i class="fas fa-atom"></i></li>
+          <li style="--i:3"><i class="fas fa-laptop-code"></i></li>
+          <li style="--i:4"><i class="fas fa-language"></i></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="messenger" id="messenger">
+      <div class="messenger__intro reveal">
+        <h2>Мессенджер и ChatRoyt</h2>
+        <p>Спрашивайте прямо во время чтения — нейросеть дополняет статью, предлагает точки зрения и отвечает естественным языком. <a href="chat.html">Открыть полный ChatRoyt</a></p>
+      </div>
+
+      <div class="chat-stage reveal delay-1" id="chatStage">
+        <div class="chat-stage__header">
+          <span class="chat-stage__status"></span>
+          <strong>ChatRoyt</strong>
+          <em>онлайн</em>
+        </div>
+        <div class="chat-stage__body" id="chatBody" aria-live="polite"></div>
+        <form class="chat-stage__compose" id="chatDemo" autocomplete="off">
+          <input type="text" name="message" placeholder="Спросите о статье..." aria-label="Сообщение ChatRoyt" />
+          <button type="submit" aria-label="Отправить"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </section>
+
+    <section class="content-section" id="manifest">
+      <article class="gg reveal">
+        <h2>Манифест чистой речи: Правила создания контента</h2>
+        <p>Мы создаем пространство, где слово лечит, вдохновляет и объединяет. Поэтому каждому автору, берущемуся за перо (или клавиатуру), необходимо неукоснительно соблюдать следующие принципы.</p>
+
+        <h3>1. Этика выше эмоций: Запрет на агрессию и сквернословие</h3>
+        <p>В нашем доме нет места грязи. Абсолютный запрет на нецензурную лексику (мат). Любые формы, завуалированные замены («звездочки», иностранные ругательства) и эвфемизмы, несущие явный агрессивный посыл, неприемлемы. Запрет на оскорбления личности (хейт). Нельзя унижать читателей, героев статей или оппонентов по интеллектуальным качествам, национальности, вероисповеданию или внешности.</p>
+
+        <h3>2. Информационная гигиена: Никакой чуши и фейков</h3>
+        <p>Мы отвечаем за то, что транслируем в мир. Запрет на дезинформацию (чушь). Каждый факт должен иметь проверяемый источник. Слухи, домыслы и откровенно ложные данные («утки») караются немедленной отправкой статьи в корзину. Запрет на спекуляции и псевдонауку. Нельзя выдавать личное мнение за истину в последней инстанции и публиковать теории, противоречащие доказанной науке.</p>
+
+        <h3>3. Нейтралитет: Ни слова о политике</h3>
+        <p>Наша территория — место силы вне политической повестки. Это святое правило: полный запрет на упоминание политических деятелей, партий и текущей политической борьбы. Запрещена пропаганда любых идеологий, а также критика государственных устройств в любом тоне. Мы не знаем «хороших» или «плохих» политиков — мы не знаем их вообще. Использование политических лозунгов, символов и риторики строго воспрещено.</p>
+
+        <h3>4. Культура диалога: Что несут в комментарии</h3>
+        <p>Правила распространяются и на обратную связь. В комментариях к статье запрещены матерные выражения, переходы на личности и любая политическая агитация. Если вам не нравится материал — критикуйте идею, а не автора. И делайте это на русском литературном языке без использования обсценной лексики.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="#top"><i class="fas fa-leaf"></i> Roytalex</a>
+      <p>Википедия будущего — статьи, обучение, голос и диалог.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

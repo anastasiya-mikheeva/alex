@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Создать статью — Roytalex</title>
+  <meta name="description" content="Создание статьи Roytalex: заголовок, категория, текст. Без комментариев." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__glow ambient__glow--a"></div>
+    <div class="ambient__glow ambient__glow--b"></div>
+    <canvas id="constellation" class="constellation"></canvas>
+  </div>
+
+  <nav class="wiki-nav" id="wikiNav">
+    <div class="wiki-nav-container">
+      <div class="nav-left">
+        <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a href="index.html" class="nav-logo" aria-label="Roytalex">
+          <i class="fas fa-leaf"></i>
+        </a>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="index.html"><i class="fas fa-globe"></i> <span class="nav-text">Главная</span></a>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-compass"></i> <span class="nav-text">Категории</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#topics"><i class="fas fa-flask"></i> Наука</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-paint-brush"></i> Искусство</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-code"></i> Технологии</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-history"></i> История</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-leaf"></i> Природа</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-language"></i> Языки</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-newspaper"></i> Новости</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-futbol"></i> Спорт</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-rocket"></i> Космос</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-ellipsis-h"></i> Прочее</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-pen-fancy"></i> <span class="nav-text">Редактировать</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="ed.html"><i class="fas fa-plus-circle"></i> Создать статью</a></li>
+            <li><a href="ed.html"><i class="fas fa-edit"></i> Править</a></li>
+            <li><a href="ed.html#file"><i class="fas fa-upload"></i> Загрузить файл</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-graduation-cap"></i> <span class="nav-text">Обучение</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#learn"><i class="fas fa-book"></i> Курсы</a></li>
+            <li class="has-submenu">
+              <a href="index.html#learn"><i class="fas fa-newspaper"></i> Статьи для обучения</a>
+              <ul class="dropdown-submenu">
+                <li><a href="index.html#learn"><i class="fas fa-utensils"></i> Кулинария</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-laptop-code"></i> Программирование</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-calculator"></i> Математика</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-atom"></i> Физика</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-language"></i> Языки</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="chat.html"><i class="fas fa-robot"></i> <span class="nav-text">ChatRoyt</span></a>
+        </li>
+        <li class="nav-item-more">
+          <span tabindex="0"><i class="fas fa-ellipsis-h"></i> <span class="nav-text">Ещё</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu dropdown-menu--right">
+            <li><a href="mes.html"><i class="fas fa-envelope"></i> Сообщения</a></li>
+            <li><a href="pay.html"><i class="fas fa-credit-card"></i> Оплата</a></li>
+            <li><a href="index.html#about"><i class="fas fa-microphone"></i> Голосовой помощник</a></li>
+            <li><a href="https://t.me/Roytalex_bot"><i class="fas fa-question-circle"></i> Помощь</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <form class="wiki-search" role="search" id="wikiSearch">
+          <input type="text" name="q" placeholder="Поиск..." aria-label="Поиск" />
+          <button type="submit" aria-label="Найти"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="nav-icons">
+          <a href="index.html#about" aria-label="Голосовой помощник" title="Голосовой помощник"><i class="fas fa-microphone"></i></a>
+          <a href="akk.html" aria-label="Профиль" title="Профиль"><i class="fas fa-user-circle"></i></a>
+          <a href="mes.html" aria-label="Сообщения" title="Сообщения"><i class="fas fa-bell"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="editor-page">
+    <header class="editor-hero reveal">
+      <p class="kicker">Редактор Roytalex</p>
+      <h1>Создать статью</h1>
+      <p>Текст, факты и источники. Комментариев на этой странице нет — только материал.</p>
+    </header>
+
+    <div class="editor-shell">
+      <form class="editor-card editor-form reveal" id="editorForm">
+        <div class="editor-field">
+          <label for="articleTitle">Заголовок</label>
+          <input id="articleTitle" name="title" type="text" required placeholder="Например: Как работает нейросеть" />
+        </div>
+        <div class="editor-field">
+          <label for="articleCategory">Категория</label>
+          <select id="articleCategory" name="category">
+            <option>Наука</option>
+            <option>Технологии</option>
+            <option>Природа</option>
+            <option>История</option>
+            <option>Обучение</option>
+            <option>Спорт</option>
+            <option>Космос</option>
+          </select>
+        </div>
+        <div class="editor-field">
+          <label for="articleBody">Текст статьи</label>
+          <div class="editor-toolbar">
+            <button type="button" data-wrap="**">жирный</button>
+            <button type="button" data-insert="\n## ">заголовок</button>
+            <button type="button" data-insert="\n- ">список</button>
+            <button type="button" data-insert="\nИсточник: ">источник</button>
+          </div>
+          <textarea id="articleBody" name="body" required placeholder="Пишите ясно. Каждый факт — с проверяемым источником. Без политики и оскорблений."></textarea>
+        </div>
+        <div class="editor-field" id="file">
+          <label for="articleFile">Файл к статье (необязательно)</label>
+          <input id="articleFile" name="file" type="file" />
+        </div>
+        <div class="editor-actions">
+          <button class="profile-btn profile-btn--ghost" id="previewBtn" type="button"><i class="fas fa-eye"></i> Предпросмотр</button>
+          <button class="profile-btn profile-btn--primary" type="submit"><i class="fas fa-check"></i> Опубликовать</button>
+        </div>
+      </form>
+
+      <article class="editor-card article-view" id="articleView">
+        <h2 id="viewTitle"></h2>
+        <div class="meta">
+          <span id="viewCategory"></span>
+          <span>без комментариев</span>
+        </div>
+        <div class="body" id="viewBody"></div>
+        <p class="note"><i class="fas fa-comment-slash"></i> Обсуждение под статьёй закрыто. Можно править сам текст.</p>
+        <div class="editor-actions">
+          <button class="profile-btn profile-btn--ghost" id="editAgainBtn" type="button"><i class="fas fa-pen"></i> Править дальше</button>
+          <a class="profile-btn profile-btn--primary" href="chat.html"><i class="fas fa-robot"></i> Спросить ChatRoyt</a>
+        </div>
+      </article>
+
+      <aside class="editor-aside reveal delay-1">
+        <h2>Правила текста</h2>
+        <ul>
+          <li><i class="fas fa-ban"></i> Без мата, оскорблений и хейта</li>
+          <li><i class="fas fa-book"></i> Факты только с источником</li>
+          <li><i class="fas fa-leaf"></i> Ни слова о политике</li>
+          <li><i class="fas fa-comment-slash"></i> Комментарии отключены</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/editor.js"></script>
+</body>
+</html>
