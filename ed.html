@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Сообщения — Roytalex</title>
-  <meta name="description" content="Мессенджер Roytalex: диалоги, поиск пользователей и живые ответы." />
+  <title>Создать статью — Roytalex</title>
+  <meta name="description" content="Создание статьи Roytalex: заголовок, категория, текст. Без комментариев." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
@@ -52,6 +52,8 @@
           <span tabindex="0"><i class="fas fa-pen-fancy"></i> <span class="nav-text">Редактировать</span> <i class="fas fa-chevron-down nav-caret"></i></span>
           <ul class="dropdown-menu">
             <li><a href="ed.html"><i class="fas fa-plus-circle"></i> Создать статью</a></li>
+            <li><a href="ed.html"><i class="fas fa-edit"></i> Править</a></li>
+            <li><a href="ed.html#file"><i class="fas fa-upload"></i> Загрузить файл</a></li>
           </ul>
         </li>
         <li>
@@ -92,61 +94,84 @@
         <div class="nav-icons">
           <a href="index.html#about" aria-label="Голосовой помощник" title="Голосовой помощник"><i class="fas fa-microphone"></i></a>
           <a href="akk.html" aria-label="Профиль" title="Профиль"><i class="fas fa-user-circle"></i></a>
-          <a href="mes.html" class="is-current" aria-label="Сообщения" title="Сообщения"><i class="fas fa-bell"></i></a>
+          <a href="mes.html" aria-label="Сообщения" title="Сообщения"><i class="fas fa-bell"></i></a>
         </div>
       </div>
     </div>
   </nav>
 
-  <main class="messenger-page" id="messengerPage">
-    <div class="messenger-container">
-      <aside class="chat-list">
-        <div class="chat-list-header">
-          <i class="fas fa-comments"></i> Диалоги
-          <span class="count" id="chatCount">0</span>
-          <button class="new-chat-btn" id="newChatBtn" type="button" title="Новый чат" aria-label="Новый чат">
-            <i class="fas fa-plus"></i>
-          </button>
-        </div>
-        <div class="chat-list-items" id="chatListItems"></div>
-      </aside>
+  <main class="editor-page">
+    <header class="editor-hero reveal">
+      <p class="kicker">Редактор Roytalex</p>
+      <h1>Создать статью</h1>
+      <p>Текст, факты и источники. Комментариев на этой странице нет — только материал.</p>
+    </header>
 
-      <section class="chat-window">
-        <div class="chat-window-header" id="chatWindowHeader">
-          <button class="chat-back" id="chatBackBtn" type="button" aria-label="К списку диалогов">
-            <i class="fas fa-arrow-left"></i>
-          </button>
-          <div class="avatar"><i class="fas fa-user"></i></div>
-          <div>
-            <span class="name" id="chatContactName">Выберите диалог</span>
-            <span class="status" id="chatContactStatus"></span>
+    <div class="editor-shell">
+      <form class="editor-card editor-form reveal" id="editorForm">
+        <div class="editor-field">
+          <label for="articleTitle">Заголовок</label>
+          <input id="articleTitle" name="title" type="text" required placeholder="Например: Как работает нейросеть" />
+        </div>
+        <div class="editor-field">
+          <label for="articleCategory">Категория</label>
+          <select id="articleCategory" name="category">
+            <option>Наука</option>
+            <option>Технологии</option>
+            <option>Природа</option>
+            <option>История</option>
+            <option>Обучение</option>
+            <option>Спорт</option>
+            <option>Космос</option>
+          </select>
+        </div>
+        <div class="editor-field">
+          <label for="articleBody">Текст статьи</label>
+          <div class="editor-toolbar">
+            <button type="button" data-wrap="**">жирный</button>
+            <button type="button" data-insert="\n## ">заголовок</button>
+            <button type="button" data-insert="\n- ">список</button>
+            <button type="button" data-insert="\nИсточник: ">источник</button>
           </div>
+          <textarea id="articleBody" name="body" required placeholder="Пишите ясно. Каждый факт — с проверяемым источником. Без политики и оскорблений."></textarea>
         </div>
-        <div class="chat-messages" id="chatMessages">
-          <div class="inbox-empty"><i class="fas fa-arrow-left"></i> Выберите чат из списка слева</div>
+        <div class="editor-field" id="file">
+          <label for="articleFile">Файл к статье (необязательно)</label>
+          <input id="articleFile" name="file" type="file" />
         </div>
-        <form class="chat-input-area" id="chatForm">
-          <input type="text" id="chatInput" placeholder="Введите сообщение..." disabled aria-label="Сообщение" />
-          <button id="chatSendBtn" type="submit" disabled><i class="fas fa-paper-plane"></i> <span>Отправить</span></button>
-        </form>
-      </section>
+        <div class="editor-actions">
+          <button class="profile-btn profile-btn--ghost" id="previewBtn" type="button"><i class="fas fa-eye"></i> Предпросмотр</button>
+          <button class="profile-btn profile-btn--primary" type="submit"><i class="fas fa-check"></i> Опубликовать</button>
+        </div>
+      </form>
+
+      <article class="editor-card article-view" id="articleView">
+        <h2 id="viewTitle"></h2>
+        <div class="meta">
+          <span id="viewCategory"></span>
+          <span>без комментариев</span>
+        </div>
+        <div class="body" id="viewBody"></div>
+        <p class="note"><i class="fas fa-comment-slash"></i> Обсуждение под статьёй закрыто. Можно править сам текст.</p>
+        <div class="editor-actions">
+          <button class="profile-btn profile-btn--ghost" id="editAgainBtn" type="button"><i class="fas fa-pen"></i> Править дальше</button>
+          <a class="profile-btn profile-btn--primary" href="chat.html"><i class="fas fa-robot"></i> Спросить ChatRoyt</a>
+        </div>
+      </article>
+
+      <aside class="editor-aside reveal delay-1">
+        <h2>Правила текста</h2>
+        <ul>
+          <li><i class="fas fa-ban"></i> Без мата, оскорблений и хейта</li>
+          <li><i class="fas fa-book"></i> Факты только с источником</li>
+          <li><i class="fas fa-leaf"></i> Ни слова о политике</li>
+          <li><i class="fas fa-comment-slash"></i> Комментарии отключены</li>
+        </ul>
+      </aside>
     </div>
   </main>
 
-  <div class="add-chat-modal" id="addChatModal" role="dialog" aria-modal="true" aria-labelledby="addChatTitle">
-    <div class="add-chat-modal-content">
-      <div class="add-chat-modal-header">
-        <h2 id="addChatTitle"><i class="fas fa-user-plus"></i> Новый чат</h2>
-        <button class="add-chat-modal-close" id="addChatModalClose" type="button" aria-label="Закрыть"><i class="fas fa-times"></i></button>
-      </div>
-      <input type="text" class="add-chat-search" id="searchUsersInput" placeholder="Поиск по имени или никнейму..." />
-      <ul class="search-results" id="searchResults">
-        <li class="no-results">Введите запрос для поиска</li>
-      </ul>
-    </div>
-  </div>
-
   <script src="js/main.js"></script>
-  <script src="js/messenger.js"></script>
+  <script src="js/editor.js"></script>
 </body>
 </html>

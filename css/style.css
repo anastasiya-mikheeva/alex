@@ -3009,6 +3009,203 @@ main {
   }
 }
 
+/* ===== ARTICLE EDITOR ===== */
+.editor-page {
+  width: min(100% - 28px, 1120px);
+  margin: 0 auto;
+  padding: 28px 0 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.editor-hero {
+  margin-bottom: 22px;
+}
+
+.editor-hero .kicker {
+  margin: 0 0 8px;
+  color: var(--green-soft);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.editor-hero h1 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--cream);
+}
+
+.editor-hero p {
+  margin: 0;
+  color: var(--text-dim);
+  max-width: 56ch;
+  line-height: 1.6;
+}
+
+.editor-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.75fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.editor-card,
+.editor-aside {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(31, 52, 35, 0.94), rgba(19, 35, 24, 0.94));
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.editor-field {
+  margin-bottom: 14px;
+}
+
+.editor-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.86rem;
+  font-weight: 650;
+  color: var(--text-soft);
+}
+
+.editor-field input,
+.editor-field select,
+.editor-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  outline: none;
+  font: inherit;
+}
+
+.editor-field textarea {
+  min-height: 280px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.editor-field input:focus,
+.editor-field select:focus,
+.editor-field textarea:focus {
+  border-color: var(--green-soft);
+  box-shadow: 0 0 0 3px rgba(123, 201, 106, 0.2);
+}
+
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.editor-toolbar button {
+  border: 1px solid var(--line);
+  background: rgba(13, 26, 17, 0.4);
+  color: var(--text-soft);
+  border-radius: 10px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.editor-toolbar button:hover {
+  border-color: var(--green-soft);
+  color: var(--cream);
+}
+
+.editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.editor-actions .profile-btn--primary {
+  border: none;
+}
+
+.editor-aside h2,
+.article-view h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--cream);
+}
+
+.editor-aside ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.editor-aside li {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  display: flex;
+  gap: 8px;
+  line-height: 1.45;
+}
+
+.editor-aside li i {
+  color: var(--green-soft);
+  margin-top: 3px;
+}
+
+.article-view {
+  display: none;
+}
+
+.editor-form.is-hidden {
+  display: none;
+}
+
+.article-view.is-open {
+  display: block;
+}
+
+.article-view .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+
+.article-view .body {
+  color: var(--text-soft);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.article-view .body p {
+  margin: 0 0 14px;
+}
+
+.article-view .note {
+  margin-top: 28px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px dashed rgba(58, 107, 63, 0.55);
+  color: var(--text-dim);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 860px) {
+  .editor-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
