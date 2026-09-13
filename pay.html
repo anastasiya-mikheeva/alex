@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Оплата — Roytalex</title>
+  <meta name="description" content="Подписка Roytalex: читайте без ограничений, голос, ChatRoyt и обучение." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__glow ambient__glow--a"></div>
+    <div class="ambient__glow ambient__glow--b"></div>
+    <canvas id="constellation" class="constellation"></canvas>
+  </div>
+
+  <nav class="wiki-nav" id="wikiNav">
+    <div class="wiki-nav-container">
+      <div class="nav-left">
+        <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a href="index.html" class="nav-logo" aria-label="Roytalex">
+          <i class="fas fa-leaf"></i>
+        </a>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="index.html"><i class="fas fa-globe"></i> <span class="nav-text">Главная</span></a>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-compass"></i> <span class="nav-text">Категории</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#topics"><i class="fas fa-flask"></i> Наука</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-paint-brush"></i> Искусство</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-code"></i> Технологии</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-history"></i> История</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-leaf"></i> Природа</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-language"></i> Языки</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-newspaper"></i> Новости</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-futbol"></i> Спорт</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-rocket"></i> Космос</a></li>
+            <li><a href="index.html#topics"><i class="fas fa-ellipsis-h"></i> Прочее</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-pen-fancy"></i> <span class="nav-text">Редактировать</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="ed.html"><i class="fas fa-plus-circle"></i> Создать статью</a></li>
+          </ul>
+        </li>
+        <li>
+          <span tabindex="0"><i class="fas fa-graduation-cap"></i> <span class="nav-text">Обучение</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="index.html#learn"><i class="fas fa-book"></i> Курсы</a></li>
+            <li class="has-submenu">
+              <a href="index.html#learn"><i class="fas fa-newspaper"></i> Статьи для обучения</a>
+              <ul class="dropdown-submenu">
+                <li><a href="index.html#learn"><i class="fas fa-utensils"></i> Кулинария</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-laptop-code"></i> Программирование</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-calculator"></i> Математика</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-atom"></i> Физика</a></li>
+                <li><a href="index.html#learn"><i class="fas fa-language"></i> Языки</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="chat.html"><i class="fas fa-robot"></i> <span class="nav-text">ChatRoyt</span></a>
+        </li>
+        <li class="nav-item-more">
+          <span tabindex="0"><i class="fas fa-ellipsis-h"></i> <span class="nav-text">Ещё</span> <i class="fas fa-chevron-down nav-caret"></i></span>
+          <ul class="dropdown-menu dropdown-menu--right">
+            <li><a href="mes.html"><i class="fas fa-envelope"></i> Сообщения</a></li>
+            <li><a href="pay.html"><i class="fas fa-credit-card"></i> Оплата</a></li>
+            <li><a href="index.html#about"><i class="fas fa-microphone"></i> Голосовой помощник</a></li>
+            <li><a href="https://t.me/Roytalex_bot"><i class="fas fa-question-circle"></i> Помощь</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <form class="wiki-search" role="search" id="wikiSearch">
+          <input type="text" name="q" placeholder="Поиск..." aria-label="Поиск" />
+          <button type="submit" aria-label="Найти"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="nav-icons">
+          <a href="index.html#about" aria-label="Голосовой помощник" title="Голосовой помощник"><i class="fas fa-microphone"></i></a>
+          <a href="akk.html" aria-label="Профиль" title="Профиль"><i class="fas fa-user-circle"></i></a>
+          <a href="mes.html" aria-label="Сообщения" title="Сообщения"><i class="fas fa-bell"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pay-page" id="payPage">
+    <header class="pay-hero reveal">
+      <p class="kicker">Подписка Roytalex</p>
+      <h1>Знания без паузы — голос, статьи и ChatRoyt</h1>
+      <p class="lead">Выберите тариф. Это демо-оплата: деньги не списываются, карта никуда не уходит.</p>
+    </header>
+
+    <div class="pay-toggle reveal" role="group" aria-label="Период оплаты">
+      <button type="button" class="is-active" data-cycle="month" id="cycleMonth">Помесячно</button>
+      <button type="button" data-cycle="year" id="cycleYear">За год <span class="save">−20%</span></button>
+    </div>
+
+    <div class="pay-layout">
+      <div class="pay-plans reveal" id="payPlans">
+        <button class="pay-plan" type="button" data-plan="reader">
+          <h2>Читатель</h2>
+          <div class="price" data-month="0 ₽" data-year="0 ₽">0 ₽<small>навсегда</small></div>
+          <ul>
+            <li><i class="fas fa-check"></i> Статьи и категории</li>
+            <li><i class="fas fa-check"></i> Поиск по платформе</li>
+            <li><i class="fas fa-check"></i> Базовый ChatRoyt</li>
+          </ul>
+        </button>
+
+        <button class="pay-plan is-selected" type="button" data-plan="plus">
+          <span class="badge">популярный</span>
+          <h2>Plus</h2>
+          <div class="price" data-month="299 ₽" data-year="2 390 ₽">299 ₽<small>в месяц</small></div>
+          <ul>
+            <li><i class="fas fa-check"></i> Всё из тарифа «Читатель»</li>
+            <li><i class="fas fa-check"></i> Голосовой помощник без лимита</li>
+            <li><i class="fas fa-check"></i> Саммари статей и офлайн-чтение</li>
+            <li><i class="fas fa-check"></i> Курсы и видеоуроки</li>
+          </ul>
+        </button>
+
+        <button class="pay-plan" type="button" data-plan="pro">
+          <h2>Исследователь</h2>
+          <div class="price" data-month="799 ₽" data-year="6 390 ₽">799 ₽<small>в месяц</small></div>
+          <ul>
+            <li><i class="fas fa-check"></i> Всё из Plus</li>
+            <li><i class="fas fa-check"></i> Приоритет в ChatRoyt</li>
+            <li><i class="fas fa-check"></i> Загрузка файлов и правки без очереди</li>
+            <li><i class="fas fa-check"></i> Ранний доступ к новым курсам</li>
+          </ul>
+        </button>
+      </div>
+
+      <aside class="pay-checkout reveal delay-1">
+        <h2>Оформление</h2>
+        <div class="pay-summary">
+          <div>
+            <span class="label">Тариф</span>
+            <strong id="summaryPlan">Plus</strong>
+          </div>
+          <div class="total" id="summaryPrice">299 ₽</div>
+        </div>
+
+        <form class="pay-form" id="payForm" autocomplete="off">
+          <div class="pay-methods" aria-hidden="true">
+            <span><i class="fas fa-credit-card"></i> Карта</span>
+            <span><i class="fab fa-apple"></i> Apple Pay</span>
+            <span><i class="fas fa-university"></i> СБП</span>
+          </div>
+          <div class="form-group">
+            <label for="cardName">Имя на карте</label>
+            <input id="cardName" name="cardName" type="text" placeholder="Алексей Википедистов" required />
+          </div>
+          <div class="form-group">
+            <label for="cardNumber">Номер карты</label>
+            <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" placeholder="ACCT-000015" maxlength="19" required />
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="cardExpiry">Срок</label>
+              <input id="cardExpiry" name="cardExpiry" type="text" inputmode="numeric" placeholder="MM/YY" maxlength="5" required />
+            </div>
+            <div class="form-group">
+              <label for="cardCvc">CVC</label>
+              <input id="cardCvc" name="cardCvc" type="password" inputmode="numeric" placeholder="•••" maxlength="4" required />
+            </div>
+          </div>
+          <button class="pay-submit" type="submit"><i class="fas fa-lock"></i> Оплатить <span id="payAmount">299 ₽</span></button>
+          <p class="pay-note"><i class="fas fa-shield-alt"></i> Демо-форма: данные не отправляются на сервер и не сохраняются.</p>
+        </form>
+
+        <div class="pay-success" id="paySuccess">
+          <div class="mark"><i class="fas fa-check"></i></div>
+          <h3>Оплата прошла</h3>
+          <p id="paySuccessText">Тариф Plus активен. Можно читать, слушать и спрашивать ChatRoyt без пауз.</p>
+          <a class="pay-submit" href="index.html" style="text-decoration:none;"><i class="fas fa-leaf"></i> На главную</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="index.html"><i class="fas fa-leaf"></i> Roytalex</a>
+      <p>Подписка — статьи, голос и диалог без ограничений.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/pay.js"></script>
+</body>
+</html>
