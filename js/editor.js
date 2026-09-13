@@ -227,12 +227,12 @@
     const mins = Math.max(1, Math.ceil(n / 180));
     $("rMeta").textContent = `${formatDate(new Date())} · ${mins} мин · ${category}`;
     const img = $("rCover");
-    if (coverData) {
+    if (coverData && coverData.startsWith("data:image")) {
       img.src = coverData;
-      img.hidden = false;
+      img.classList.add("is-on");
     } else {
       img.removeAttribute("src");
-      img.hidden = true;
+      img.classList.remove("is-on");
     }
     page.classList.add("is-reading");
     window.scrollTo({ top: 0, behavior: "smooth" });
