@@ -118,14 +118,35 @@
   };
 
   const applyCover = (data) => {
-    coverData = data || "";
+    coverData = data && String(data).startsWith("data:image") ? data : "";
     if (coverData) {
       coverBox.classList.add("has-img");
       coverBox.style.backgroundImage = `url("${coverData}")`;
+      coverBox.style.backgroundSize = "cover";
+      coverBox.style.backgroundPosition = "center";
     } else {
       coverBox.classList.remove("has-img");
       coverBox.style.backgroundImage = "";
     }
+  };
+
+  const setReaderCover = (data) => {
+    const wrap = $("rCover");
+    wrap.classList.remove("is-on");
+    wrap.replaceChildren();
+    if (!data || !String(data).startsWith("data:image")) return;
+    const img = new Image();
+    img.alt = "";
+    img.onload = () => {
+      if (!img.naturalWidth) return;
+      wrap.replaceChildren(img);
+      wrap.classList.add("is-on");
+    };
+    img.onerror = () => {
+      applyCover("");
+      persist();
+    };
+    img.src = data;
   };
 
   const restore = () => {
@@ -135,7 +156,15 @@
       if (d.lead) lead.value = d.lead;
       if (d.body) body.value = d.body;
       if (d.category) category = d.category;
-      if (d.coverData) applyCover(d.coverData);
+      if (d.coverData && String(d.coverData).startsWith("data:image")) {
+        const probe = new Image();
+        probe.onload = () => {
+          applyCover(d.coverData);
+          render();
+        };
+        probe.onerror = () => applyCover("");
+        probe.src = d.coverData;
+      }
       document.querySelectorAll(".studio-cat").forEach((b) => {
         b.classList.toggle("is-on", b.dataset.cat === category);
       });
@@ -143,6 +172,7 @@
       /* ignore broken draft */
     }
     render();
+    if (!title.value) title.focus();
   };
 
   const toast = (text) => {
@@ -226,14 +256,7 @@
     const n = countWords(body.value);
     const mins = Math.max(1, Math.ceil(n / 180));
     $("rMeta").textContent = `${formatDate(new Date())} · ${mins} мин · ${category}`;
-    const img = $("rCover");
-    if (coverData && coverData.startsWith("data:image")) {
-      img.src = coverData;
-      img.classList.add("is-on");
-    } else {
-      img.removeAttribute("src");
-      img.classList.remove("is-on");
-    }
+    setReaderCover(coverData);
     page.classList.add("is-reading");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

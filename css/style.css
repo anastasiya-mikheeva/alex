@@ -3358,6 +3358,7 @@ main {
 }
 
 .studio-dock {
+  position: static;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -3410,19 +3411,25 @@ main {
   box-shadow: 0 18px 50px rgba(0, 12, 0, 0.45);
 }
 
-.reader-cover {
-  display: none;
+.reader-hero:empty,
+.reader-hero:not(.is-on) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.reader-hero.is-on {
+  display: block;
+  line-height: 0;
+}
+
+.reader-hero.is-on img {
   width: 100%;
   height: 320px;
   object-fit: cover;
   border: none;
   border-bottom: 1px solid rgba(58, 107, 63, 0.35);
-  border-radius: 0;
-  margin: 0;
-}
-
-.reader-cover.is-on {
-  display: block;
 }
 
 .reader-inner {
@@ -3546,7 +3553,7 @@ main {
     min-height: 76px;
   }
 
-  .reader-cover.is-on {
+  .reader-hero.is-on img {
     height: 200px;
   }
 
