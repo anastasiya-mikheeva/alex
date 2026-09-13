@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Создать статью — Roytalex</title>
-  <meta name="description" content="Создание статьи Roytalex: заголовок, категория, текст. Без комментариев." />
+  <title>Новая статья — Roytalex</title>
+  <meta name="description" content="Напишите статью для Roytalex: заголовок, обложка и текст. Сразу видно, как её увидит читатель." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
@@ -51,7 +51,7 @@
         <li>
           <span tabindex="0"><i class="fas fa-pen-fancy"></i> <span class="nav-text">Редактировать</span> <i class="fas fa-chevron-down nav-caret"></i></span>
           <ul class="dropdown-menu">
-            <li><a href="ed.html"><i class="fas fa-plus-circle"></i> Создать статью</a></li>
+            <li><a href="ed.html" class="is-current"><i class="fas fa-plus-circle"></i> Создать статью</a></li>
             <li><a href="ed.html"><i class="fas fa-edit"></i> Править</a></li>
             <li><a href="ed.html#file"><i class="fas fa-upload"></i> Загрузить файл</a></li>
           </ul>
@@ -100,75 +100,86 @@
     </div>
   </nav>
 
-  <main class="editor-page">
-    <header class="editor-hero reveal">
-      <p class="kicker">Редактор Roytalex</p>
-      <h1>Создать статью</h1>
-      <p>Текст, факты и источники. Комментариев на этой странице нет — только материал.</p>
-    </header>
+  <main class="studio-page" id="studioPage">
+    <section class="studio" id="studio">
+      <header class="studio-head">
+        <p class="studio-kicker"><i class="fas fa-feather-pointed"></i> Новая статья</p>
+        <input class="studio-title" id="title" type="text" maxlength="160" placeholder="Заголовок" autocomplete="off" />
+        <input class="studio-lead" id="lead" type="text" maxlength="240" placeholder="Одно предложение — о чём эта статья" autocomplete="off" />
+        <div class="studio-cats" id="cats" role="group" aria-label="Раздел">
+          <button type="button" class="studio-cat is-on" data-cat="Наука">Наука</button>
+          <button type="button" class="studio-cat" data-cat="Технологии">Технологии</button>
+          <button type="button" class="studio-cat" data-cat="Природа">Природа</button>
+          <button type="button" class="studio-cat" data-cat="История">История</button>
+          <button type="button" class="studio-cat" data-cat="Искусство">Искусство</button>
+          <button type="button" class="studio-cat" data-cat="Космос">Космос</button>
+          <button type="button" class="studio-cat" data-cat="Обучение">Обучение</button>
+        </div>
+      </header>
 
-    <div class="editor-shell">
-      <form class="editor-card editor-form reveal" id="editorForm">
-        <div class="editor-field">
-          <label for="articleTitle">Заголовок</label>
-          <input id="articleTitle" name="title" type="text" required placeholder="Например: Как работает нейросеть" />
-        </div>
-        <div class="editor-field">
-          <label for="articleCategory">Категория</label>
-          <select id="articleCategory" name="category">
-            <option>Наука</option>
-            <option>Технологии</option>
-            <option>Природа</option>
-            <option>История</option>
-            <option>Обучение</option>
-            <option>Спорт</option>
-            <option>Космос</option>
-          </select>
-        </div>
-        <div class="editor-field">
-          <label for="articleBody">Текст статьи</label>
-          <div class="editor-toolbar">
-            <button type="button" data-wrap="**">жирный</button>
-            <button type="button" data-insert="\n## ">заголовок</button>
-            <button type="button" data-insert="\n- ">список</button>
-            <button type="button" data-insert="\nИсточник: ">источник</button>
+      <label class="studio-cover" id="coverBox" for="cover">
+        <input type="file" id="cover" accept="image/*" hidden />
+        <span class="studio-cover-empty">
+          <i class="far fa-image"></i>
+          Добавить обложку
+        </span>
+        <span class="studio-cover-swap"><i class="fas fa-camera"></i> Заменить обложку</span>
+      </label>
+
+      <div class="studio-work">
+        <div class="studio-write">
+          <div class="studio-tools" role="toolbar" aria-label="Оформление">
+            <button type="button" data-md="**" title="Жирный · Ctrl+B"><i class="fas fa-bold"></i></button>
+            <button type="button" data-md="*" title="Курсив · Ctrl+I"><i class="fas fa-italic"></i></button>
+            <button type="button" data-md="## " title="Подзаголовок"><i class="fas fa-heading"></i></button>
+            <button type="button" data-md="- " title="Список"><i class="fas fa-list-ul"></i></button>
+            <button type="button" data-md="> " title="Цитата"><i class="fas fa-quote-left"></i></button>
           </div>
-          <textarea id="articleBody" name="body" required placeholder="Пишите ясно. Каждый факт — с проверяемым источником. Без политики и оскорблений."></textarea>
+          <textarea class="studio-body" id="body" placeholder="Пишите свободно. Справа сразу видно, как статью увидит читатель."></textarea>
         </div>
-        <div class="editor-field" id="file">
-          <label for="articleFile">Файл к статье (необязательно)</label>
-          <input id="articleFile" name="file" type="file" />
-        </div>
-        <div class="editor-actions">
-          <button class="profile-btn profile-btn--ghost" id="previewBtn" type="button"><i class="fas fa-eye"></i> Предпросмотр</button>
-          <button class="profile-btn profile-btn--primary" type="submit"><i class="fas fa-check"></i> Опубликовать</button>
-        </div>
-      </form>
+        <aside class="studio-preview" aria-label="Как увидит читатель">
+          <p class="studio-preview-label">Так увидит читатель</p>
+          <article class="studio-paper" id="live">
+            <h1>Заголовок</h1>
+            <p class="lead">Одно предложение — о чём эта статья</p>
+            <p class="empty">Начните писать слева — текст появится здесь.</p>
+          </article>
+        </aside>
+      </div>
+    </section>
 
-      <article class="editor-card article-view" id="articleView">
-        <h2 id="viewTitle"></h2>
-        <div class="meta">
-          <span id="viewCategory"></span>
-          <span>без комментариев</span>
-        </div>
-        <div class="body" id="viewBody"></div>
-        <p class="note"><i class="fas fa-comment-slash"></i> Обсуждение под статьёй закрыто. Можно править сам текст.</p>
-        <div class="editor-actions">
-          <button class="profile-btn profile-btn--ghost" id="editAgainBtn" type="button"><i class="fas fa-pen"></i> Править дальше</button>
-          <a class="profile-btn profile-btn--primary" href="chat.html"><i class="fas fa-robot"></i> Спросить ChatRoyt</a>
-        </div>
-      </article>
-
-      <aside class="editor-aside reveal delay-1">
-        <h2>Правила текста</h2>
-        <ul>
-          <li><i class="fas fa-ban"></i> Без мата, оскорблений и хейта</li>
-          <li><i class="fas fa-book"></i> Факты только с источником</li>
-          <li><i class="fas fa-leaf"></i> Ни слова о политике</li>
-          <li><i class="fas fa-comment-slash"></i> Комментарии отключены</li>
-        </ul>
-      </aside>
+    <div class="studio-dock" id="studioDock">
+      <div class="studio-stats">
+        <span id="words">0 слов</span>
+        <span>~ <strong id="mins">1</strong> мин чтения</span>
+        <span class="ok" id="saved">черновик на этом устройстве</span>
+      </div>
+      <div class="studio-actions">
+        <button class="btn btn--ghost" type="button" id="clearBtn">Очистить</button>
+        <button class="btn btn--primary" type="button" id="publishBtn">Опубликовать</button>
+      </div>
     </div>
+
+    <article class="reader" id="reader">
+      <img class="reader-cover" id="rCover" alt="" hidden />
+      <div class="reader-inner">
+        <p class="reader-kicker" id="rCat">Наука</p>
+        <h1 id="rTitle"></h1>
+        <p class="reader-lead" id="rLead"></p>
+        <div class="reader-by">
+          <span class="reader-avatar" aria-hidden="true">А</span>
+          <div>
+            <b>Алексей Википедистов</b>
+            <span id="rMeta"></span>
+          </div>
+        </div>
+        <div class="reader-prose" id="rBody"></div>
+        <div class="reader-actions">
+          <button class="btn btn--primary" type="button" id="editAgain">Править дальше</button>
+          <a class="btn btn--ghost" href="index.html">На главную</a>
+        </div>
+      </div>
+    </article>
   </main>
 
   <script src="js/main.js"></script>
